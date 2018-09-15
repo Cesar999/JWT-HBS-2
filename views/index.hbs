@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Logging In</title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+    <form action="/login" method="POST" >
+        First name: <input type="text" name="name"><br>
+        Last name: <input type="text" name="pass"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <!-- <a href="/signin"><button>Sign In</button></a> -->
+    <form action="/signin" method="POST" >
+        <input type="submit" value="Sign In">
+    </form>
+    <h1 class='red'>{{msg}}</h1>
+</body>
+</html>

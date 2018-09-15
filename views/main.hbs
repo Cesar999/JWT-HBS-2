@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Some Website</title>
+</head>
+<body>
+    {{> header}}
+    <div class="divAbout">
+        <h2>Welcome {{name}}</h2>
+        <h3>Password: {{pass}}</h3>
+        <h3 ID='token'>{{token}}</h3>
+        <button id='getSecret'>Request Secret</button>
+    </div> 
+    {{> footer}}
+    <script>
+        const btn = document.getElementById('getSecret');
+        btn.addEventListener('click',getSecret);
+        let token = document.getElementById('token').innerText;
+
+        function getSecret(){
+                fetch('/secret', {
+                    method: 'GET', 
+                    headers: {"Authorization":`JWT ${token}`}})
+                .then(function(res) {
+                if(res.ok) {
+                return res.text();
+                }
+                throw new Error('Request failed.');
+                })
+                .then(res=>{
+                    alert(JSON.parse(res).message);
+                })
+                .catch(function(error) {
+                console.log(error);
+                 });
+            }   
+
+    </script>
+    
+    <script>
+        if (window.history.replaceState) {
+                window.history.replaceState(null, null, '/' );
+            }
+    </script>
+</body>
+</html>
